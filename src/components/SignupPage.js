@@ -12,7 +12,7 @@ const OuterContainer = styled.div`
 `;
 
 const InnerContainer = styled.div`
-  width: 375px;
+  width: 320px;
   height: 650px;
   padding: 20px;
   background-color: white;
@@ -25,7 +25,7 @@ const InnerContainer = styled.div`
 
 const Title = styled.h1`
   font-size: 24px;
-  color: #6a5acf;
+  color:rgb(0, 0, 0);
   margin-bottom: 10px;
 `;
 
@@ -103,13 +103,24 @@ const Button = styled.button`
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  background-color: #6a5acf;
+  color: black;
+  background-color: ${({ variant }) => 
+    variant === 'primary' ? '#ccc' : '#ccc'
+  };
+  color: #fff; /* Black text */
+  text-decoration: none;
+
+  &:hover {
+    background-color: rgb(132, 30, 196); /* Darker violet on hover */
+    color: white;
+  }
   color: white;
   transition: background-color 0.3s ease;
 
   &:hover {
     background-color: #5546c7;
   }
+
 `;
 
 const SignupPage = () => {

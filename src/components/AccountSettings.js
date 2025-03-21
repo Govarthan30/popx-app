@@ -13,7 +13,7 @@ const OuterContainer = styled.div`
 `;
 
 const InnerContainer = styled.div`
-  width: 375px;
+  width: 320px;
   height: 650px;
   padding: 20px;
   background-color: white;
@@ -89,6 +89,7 @@ const AccountSettings = () => {
         </ProfileSection>
         <Description>
           Welcome to your account settings. Here, you can manage your profile and preferences.
+          <strong>Developed by Govarthan V</strong>.
         </Description>
       </InnerContainer>
     </OuterContainer>

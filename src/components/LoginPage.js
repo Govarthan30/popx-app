@@ -13,14 +13,16 @@ const OuterContainer = styled.div`
 
 const InnerContainer = styled.div`
   width: 320px;
-  height: 500px;
-  padding: 20px;;
+  height: 650px;
+  padding: 20px;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
   flex-direction: column;
   align-items: flex-start; /* Align content to the left */
 `;
+
 const Title = styled.h1`
   font-size: 24px;
   margin-bottom: 10px;
@@ -31,7 +33,7 @@ const Subtitle = styled.p`
   font-size: 16px;
   color: #666;
   margin-bottom: 20px;
-  text-align: center;
+  text-align: left;
 `;
 
 const InputWrapper = styled.div`

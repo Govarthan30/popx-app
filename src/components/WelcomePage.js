@@ -53,6 +53,7 @@ const Button = styled.button`
 
   &:hover {
     background-color: rgb(132, 30, 196); /* Darker violet on hover */
+    color: white;
   }
 `;
 
