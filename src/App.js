@@ -1,21 +1,30 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import WelcomePage from './components/WelcomePage';
-import LoginPage from './components/LoginPage';
-import SignupPage from './components/SignupPage';
-import AccountSettings from './components/AccountSettings';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import WelcomePage from "./components/WelcomePage";
+import LoginPage from "./components/LoginPage";
+import SignupPage from "./components/SignupPage";
+import AccountSettings from "./components/AccountSettings";
 
-function App() {
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
   return (
-    <Router>
-      <Routes>
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
         <Route path="/" element={<WelcomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/account-settings" element={<AccountSettings />} />
       </Routes>
-    </Router>
+    </AnimatePresence>
   );
-}
+};
+
+const App = () => (
+  <Router>
+    <AnimatedRoutes />
+  </Router>
+);
 
 export default App;

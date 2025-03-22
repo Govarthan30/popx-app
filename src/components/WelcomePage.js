@@ -45,17 +45,24 @@ const Button = styled.button`
   font-size: 16px;
   cursor: pointer;
   margin: 10px 0;
+  color: white;
   background-color: ${({ variant }) => 
-    variant === 'primary' ? '#ccc' : '#ccc'
+    variant === 'primary' ? 'rgb(87, 24, 223)' : 'rgb(200, 180, 230)'
   };
-  color: #fff; /* Black text */
-  text-decoration: none;
+  color: ${({ variant }) => 
+    variant === 'primary' ? 'white' : '#3d2352'
+  };
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
-    background-color: rgb(132, 30, 196); /* Darker violet on hover */
+    background-color: rgb(167, 149, 205);
     color: white;
   }
 `;
+
 
 const StyledLink = styled(Link)`
   text-decoration: none;

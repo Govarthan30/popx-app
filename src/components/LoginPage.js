@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-const OuterContainer = styled.div`
+const pageVariants = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  exit: { opacity: 0, y: -20, transition: { duration: 0.3 } },
+};
+
+const OuterContainer = styled(motion.div)`
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Align content at the top */
+  align-items: flex-start;
   height: 100vh;
   background: linear-gradient(135deg, rgb(116, 84, 204), #eaeaea);
   padding-top: 50px;
@@ -20,13 +27,13 @@ const InnerContainer = styled.div`
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align content to the left */
+  align-items: flex-start;
 `;
 
 const Title = styled.h1`
   font-size: 24px;
   margin-bottom: 10px;
-  color:rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
 `;
 
 const Subtitle = styled.p`
@@ -110,7 +117,12 @@ const LoginPage = () => {
   };
 
   return (
-    <OuterContainer>
+    <OuterContainer
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       <InnerContainer>
         <Title>Sign in to your PopX account</Title>
         <Subtitle>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Subtitle>

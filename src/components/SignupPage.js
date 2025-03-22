@@ -1,6 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+// Fade-in animation for the container
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 const OuterContainer = styled.div`
   display: flex;
@@ -9,6 +21,7 @@ const OuterContainer = styled.div`
   height: 100vh;
   background: linear-gradient(135deg, rgb(116, 84, 204), #eaeaea);
   padding-top: 30px;
+  animation: ${fadeIn} 0.6s ease-in-out;
 `;
 
 const InnerContainer = styled.div`
@@ -25,7 +38,7 @@ const InnerContainer = styled.div`
 
 const Title = styled.h1`
   font-size: 24px;
-  color:rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
   margin-bottom: 10px;
 `;
 
@@ -60,16 +73,19 @@ const InputLabel = styled.label`
   }
 `;
 
+// Scale animation for input fields on focus
 const Input = styled.input`
   width: 100%;
   padding: 13px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+  transition: all 0.3s ease-in-out;
 
   &:focus {
     border-color: #6a5acf;
     outline: none;
+    transform: scale(1.05); // Slight scale effect
   }
 
   &:focus ~ ${InputLabel},
@@ -96,6 +112,7 @@ const RadioLabel = styled.label`
   gap: 5px;
 `;
 
+// Button hover animation with scaling
 const Button = styled.button`
   width: 100%;
   padding: 15px;
@@ -103,24 +120,13 @@ const Button = styled.button`
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  color: black;
-  background-color: ${({ variant }) => 
-    variant === 'primary' ? '#ccc' : '#ccc'
-  };
-  color: #fff; /* Black text */
-  text-decoration: none;
-
-  &:hover {
-    background-color: rgb(132, 30, 196); /* Darker violet on hover */
-    color: white;
-  }
+  background-color: #6a5acf;
   color: white;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease-in-out;
 
   &:hover {
-    background-color: #5546c7;
+    background-color:rgb(200, 180, 230);
   }
-
 `;
 
 const SignupPage = () => {
@@ -172,15 +178,33 @@ const SignupPage = () => {
               <InputLabel htmlFor="companyName" className={companyName ? "active" : ""}>Company Name*</InputLabel>
             </InputWrapper>
             <RadioGroup>
-              <RadioLabel>
-                <input type="radio" id="agency" name="userType" checked={isAgency} onChange={() => setIsAgency(true)} />
-                Are you an Agency?
-              </RadioLabel>
-              <RadioLabel>
-                <input type="radio" id="brand" name="userType" checked={!isAgency} onChange={() => setIsAgency(false)} />
-                Are you a Brand?
-              </RadioLabel>
-            </RadioGroup>
+                {/* Question */}
+                <p style={{ fontWeight: "bold", marginBottom: "8px" }}>Are you an Agency?</p>
+
+                {/* Yes Option */}
+                <RadioLabel>
+                  <input
+                    type="radio"
+                    id="yes"
+                    name="agency"
+                    checked={isAgency}
+                    onChange={() => setIsAgency(true)}
+                  />
+                  <span style={{ marginLeft: "8px" }}>Yes</span>
+                </RadioLabel>
+
+                {/* No Option */}
+                <RadioLabel>
+                  <input
+                    type="radio"
+                    id="no"
+                    name="agency"
+                    checked={!isAgency}
+                    onChange={() => setIsAgency(false)}
+                  />
+                  <span style={{ marginLeft: "8px" }}>No</span>
+                </RadioLabel>
+              </RadioGroup>
           </FormContainer>
         </div>
         <Button onClick={handleSignup}>Create Account</Button>
